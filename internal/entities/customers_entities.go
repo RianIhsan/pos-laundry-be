@@ -9,8 +9,8 @@ type Customer struct {
 	Address   string    `gorm:"type:text" json:"address"`
 	Points    int       `gorm:"default:0" json:"points"`
 	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
-	// Relasi: Satu customer bisa punya banyak transaksi
-	Transactions []Transaction `gorm:"foreignKey:CustomerID" json:"transactions,omitempty"`
+	// Relasi: Satu customer bisa punya banyak transaksi dengan cascade delete
+	Transactions []Transaction `gorm:"foreignKey:CustomerID;constraint:OnDelete:CASCADE" json:"transactions,omitempty"`
 }
 
 func (Customer) TableName() string {
