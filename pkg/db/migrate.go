@@ -15,6 +15,8 @@ func Migrate(db *gorm.DB) error {
 		&entities.Transaction{},
 		&entities.TransactionItem{},
 		&entities.TransactionLog{},
+		&entities.InventoryItem{},
+		&entities.ActivityLog{},
 	)
 	if err != nil {
 		return fmt.Errorf("migration failed: %w", err)
